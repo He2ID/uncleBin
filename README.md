@@ -12,7 +12,9 @@
             success: function(data){
               console.log(data);
             }
-          });
+          });  
+          
     *  遍历数组    $.each(arrayname,function(key,value){});    
-    *  插入DOM    $(selector).append(content);
+      
+    *  插入DOM    $(selector).append(content);    
 
