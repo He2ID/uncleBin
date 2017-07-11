@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>斌叔的茶铺————jQuery练习</title>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>	
+	<style>
+		.head{
+			width: 100%;
+			text-align: center;
+		}
+		.pagetop{
+			margin-top: 50px;
+		}
+		.head>h3{
+			color: gray;
+		}
+		#all_teas{
+			width: 100%;
+		}
+		.teacard{
+			float: left;
+			width: 333px;
+			height: 300px;
+			text-align: center;
+			margin: 10px 0；
+		}
+		.teacard>h1{
+			margin: 0;
+		}
+		.teacard>img{
+			width: 200px;
+			height: 200px;
+		}
+	</style>	
+</head>
+<body>
+<div class="head pagetop">
+	<h1>Uncle Bing's Tea Shop</h1>
+</div>
+<hr>
+<div class="head">
+	<h3>all my teas</h3>
+</div>
+<div id="all_teas">
+	
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			type:'GET',
+			url:'http://resource.haorenao.cn/teas2.json',
+			success: function(data){
+				//console.log(data);
+				var teas = data;
+				console.log(teas);
+				$.each(teas,function(key,value){
+					var title = value.title;
+					var image = value.image;
+					var price = value.price;
+					var html = '<div class="teacard">'
+						+ '<h1>'+ title + '</h1>'
+						+ '<img src="' +image+'">'
+						+ '<p>价格:'+ price + '元</p>'
+						+ '</div>';
+					$('#all_teas').append(html);	
+				});
+			}
+		});
+	});
+</script>
+</body>
+</html>
