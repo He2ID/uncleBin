@@ -1,10 +1,9 @@
 # uncleBin
-参加斌叔的teach girls coding线上学习
-    
+参加斌叔的teach girls coding线上学习  
 ##第一个页面   
-* 一个简单的HTML+CSS页面   
-##斌叔茶铺   
-* 从服务器获取数据，然后将数据显示在页面上的jQuery demo
+* 一个简单的HTML+CSS页面:https://he2id.github.io/uncleBin/first_site.html  
+##斌叔茶铺  
+* 从服务器获取数据，然后将数据显示在页面上的jQuery demo:https://He2ID.github.io/uncleBin/TeaShop.HTML  
 * note： 
     *  服务器获取数据  
           $.ajax({
