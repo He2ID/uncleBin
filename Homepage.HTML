@@ -41,6 +41,27 @@
 			text-align: center;
 			border-radius: 50%;
 		}
+		/* 轮播图标题优化 */
+		@media only screen and (max-width: 768px) {
+			.carousel.slide .carousel-inner .item .carousel-caption {
+				bottom:5px;
+	 			font-size:12px;
+	 			padding-bottom: 10px;
+			}
+			.carousel.slide .carousel-indicators{
+				bottom:2px;
+				margin-bottom: 0;
+			}
+			.carousel.slide .carousel-indicators li{
+				width: 8px;
+				height: 8px;
+			}
+		}
+		@media only screen and (max-width: 425px) {
+			.carousel.slide .carousel-inner .item .carousel-caption {
+				display: none;
+			}
+		}
 	</style>
 </head>
 <body>
