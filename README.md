@@ -16,5 +16,7 @@
           
     *  遍历数组    $.each(arrayname,function(key,value){});    
       
-    *  插入DOM    $(selector).append(content);    
-
+    *  插入DOM    $(selector).append(content);   
+## 网站首页
+*  Bootstrap练习（轮播图+栅格+默认图标):https://He2ID.github.io/uncleBin/Homepage.HTML  
+  
