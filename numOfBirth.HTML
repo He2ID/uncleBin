@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>我是这年第几天出生的？</title>
+</head>
+<body>
+<script>
+	//闰年每月天数
+	var arrM =[31,29,31,30,31,30,31,31,30,31,30,31];
+	//输入的出生年、月、日的弹框 & 确保输入要是数字
+	function getBirth(birthNum){
+		var X = 0;
+		var X = prompt("请输入出生" + birthNum);
+	    console.log(typeof X);
+	    console.log(isNaN(X));
+		while(isNaN(X)||X == ""){
+			alert("请输入正整数 阿拉伯数字那种");
+			X = prompt("请输入出生" + birthNum);
+		}
+		return parseInt(X);
+	}
+	//年
+	function getBirthYear(){
+		var birthY = getBirth("年份"); 	
+		while(birthY < 1867 || birthY > 2017){
+			if(birthY < 1867){
+				alert("这个年份出生的人应该没法在这敲数字的~ 难道真有穿越这回事？");
+			}else if(birthY > 2017){
+				alert("这个年份的人还没出生呐！未来真的出现了时间机器吗？");
+			}
+			birthY = getBirth("年份");
+		}
+		return birthY;
+	}
+	//月
+	function getBirthMonth(){
+		var birthM = getBirth("月份");
+		while(birthM >= 13 || birthM <=0){
+			alert("请输入正确的月份数字");
+			birthM = getBirth("月份");
+		}
+		return birthM;
+	}
+	//日
+	function getBirthDate(Y,M){
+		var birthD = getBirth("日期");
+		while(arrM[M-1] < birthD || birthD < 1 ||(birthD==29 && M==2 && (Y%4))){
+			alert("错误日期");
+			birthD = getBirth("日期");
+		}
+		return birthD;
+	}
+	//计算是第几天
+	function sumData(Y,M,D){
+	 	 var sum = 0;
+		 if(Y%4){arrM[1]=28;}
+		 for(var i=1;i<M;i++){
+		 	sum += arrM[i-1];
+		 }
+		 sum += D;
+		 return sum;   	
+	}
+	function getTotal(){
+		 var Y = getBirthYear();
+		 var M = getBirthMonth();
+		 var D = getBirthDate(Y,M);
+		 var S = sumData(Y,M,D)
+		 console.log(Y,M,D,S);
+		 document.write("您的生日是在",Y,"年第",S,"天");
+	}
+	getTotal();
+</script>
+</body>
+</html>
