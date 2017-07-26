@@ -1,0 +1,70 @@
+*{
+	margin: 0;
+	padding:0; 
+}
+body{
+	font-family: "微软雅黑";
+	color:#666;
+}
+.clearfloat{
+	zoom:1;
+}
+.clearfloat:after{
+	display: block;
+	clear: both;
+	content: " ";
+	visibility: hidden;
+	height: 0;
+}
+.main{
+	width: 1200px;
+	height: 500px;
+	margin: 30px auto;
+	position: relative;
+}
+/* 切换按钮 */
+.tab-group p{
+	float: left;
+	width: 300px;
+	height: 40px;
+	line-height: 40px;	
+	text-align: center;
+	font-size: 22px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.tab-group p.tab-active{
+	background-color: #ffcc00;
+}
+/* 图片轮播主体 */
+.banner{
+	position: relative;
+	width: 1200px;
+	height: 460px;
+	overflow: hidden;
+}
+.bannner-slide{
+	position: absolute;
+	width: 1200px;
+	height: 460px;
+	overflow: hidden;
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-position:center center;
+	display: none;
+}
+.slide-active{
+	display: block;
+}
+.slide1{
+	background-image: url("https://resource.bcgame-face2face.haorenao.cn/bootstrap-banner1.jpg");
+}
+.slide2{
+	background-image: url("https://resource.bcgame-face2face.haorenao.cn/bootstrap-banner2.jpg");
+}
+.slide3{
+	background-image: url("https://resource.bcgame-face2face.haorenao.cn/bootstrap-banner3.jpg");
+}
+.slide4{
+	background-image: url("https://www.cxy61.com/statics/images/buyClass.jpg");
+}
