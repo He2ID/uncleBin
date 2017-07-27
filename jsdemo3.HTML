@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>2_1.js</title>
+</head>
+<body>
+	<button>btn1</button>
+	<button>btn2</button>
+	<button>btn3</button>
+	<script>
+		//引用类型变量比较
+		document.write([[]==[],[]===[],[4]==[4],4===[4]]);//全部false
+		console.log(4==[4]);//true
+		//引用变量赋值
+		var a = [4];
+		var b = a;
+		a = [4,44];
+		console.log(b); //[4]
+		console.log(a); //(2)[4,44]
+		a = b;
+		console.log(b); //[4]
+		console.log(a); //[4]		
+		b.push(44);
+		console.log(b); //(2)[4,44]
+		console.log(a); //(2)[4,44]
+		//类型检测
+		console.log([typeof null, null instanceof Object]);//["object", false]
+		//作用域
+		function fn1(){
+			var x = y = 1;
+			console.log("x:",x);//x:1 x是局部变量
+		}
+		fn1();
+		console.log("y:",y); //y:1 y是全局变量
+		//console.log("x:",x);  报错
+		//变量对象
+		//console.log(person || (person = 'xm'));  报错 person没定义直接报错
+		console.log(window.person || (window.person = 'xm')); //xm 右边赋值了
+		//作用域链
+		var btns = document.getElementsByTagName('button');
+/*		for(var i=0;i<3;i++){
+			btns[i].onclick = function(){
+				alert(i);
+			};
+		}//onclick还没触发for就循环完了，i变成3，再点击都弹出3*/
+	    function alerti(i){
+	        btns[i].onclick = function () { alert(i + 1);}
+	    }
+	    for(var i=0;i<3;i++){
+	        alerti(i);
+	    }
+	    //预解析
+	    var c = 1;
+	    function fn2(c){
+	    	document.write(c);
+	    	c=3;//c作为函数的参数，是局部变量
+	    }
+	    fn2();
+	    document.write(c);
+	</script>
+</body>
+</html>
