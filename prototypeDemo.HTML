@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	//==== proto ====
+	//函数原有方法
+	function proto1(){
+		this.a=function(){
+			console.log('aaa');
+		}
+	}
+	console.log(proto1.prototype);
+	//.prototype添加新方法
+	proto1.prototype.sayx=function(n){
+		console.log(n);
+	}
+	proto1.prototype.sayhello=function(){
+		console.log("sayhello");
+	}	
+	//.prototype添加新属性
+	proto1.prototype.val=123;
+	//使用新旧方法
+	var _proto1=new proto1();
+	console.log(_proto1);
+	_proto1.a();
+	_proto1.sayx('xxx');
+	_proto1.sayhello();
+	console.log(_proto1.val);
+	//==== 构造器 ====
+	function abc(){
+		this.a1=function(){
+			console.log("原定义a1");
+		}
+	}
+	//静态方法 不是abc函数本身的一部分
+	abc.a3=function(){
+		console.log("静态a3");
+	}
+	abc.a3();
+	//动态方法构造实例
+	abc.prototype.a2=function(){
+		console.log("动态a2");
+	}
+	var _abc = new abc();
+	console.log(_abc);
+	_abc.a1();
+	_abc.a2();
+	//继承
+	function proto2(){
+		this.a2=function(){
+			console.log('a2');
+		}
+	}
+	function proto3(){
+		this.a3=function(){
+			console.log('a3');
+		}
+	}	
+	proto3.prototype.test3 = function(){
+		console.log('test3');
+	}
+	proto2.prototype = new proto3();//
+	var xx = new proto2();
+	xx.a3();
+	xx.test3();
+	xx.a2();
+	console.log(xx);
+	//=== prototype怎么用 ===
+	//构造器命名首字母大写
+	function Objs(){
+		this.age=18;
+		this.sex="man";
+		this.init();
+	}
+	Objs.prototype={
+		init:function(){
+			this.a();
+			this.b();
+			this.c();
+		},
+		a:function(){
+			console.log('a1')
+		},
+		b:function(){
+			console.log('b1')
+		},
+		c:function(){
+			console.log('c1')
+		},				
+	};
+	var xx = new Objs();
+	xx.a();
+	console.log(xx.age);
+</script>
+</body>
+</html>
