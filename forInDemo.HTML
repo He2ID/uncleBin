@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>for in向函数内添加key:value</title>
+</head>
+<body>
+	<script>
+	//定义
+	var objConfig={
+		a:'a11',
+		b:'b11',
+		c:'c11'
+	}
+	var xx =new testFn(objConfig);	
+	function testFn(n){
+		//this.x=123;
+		//this['abc']='xxabc'; 
+		for(var i in n){
+			this[i]=n[i];//对当前作用域添加key & value
+		}
+	}
+	</script>
+</body>
+</html>
