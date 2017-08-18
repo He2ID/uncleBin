@@ -1,0 +1,55 @@
+<meta charset="UTF-8">
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<title>True or False</title>
+<style>
+*{
+	margin:0;
+	padding: 0;
+	border: 0;
+}
+.title{
+	margin-top: 30vh;
+}
+.title-h1{
+	margin: 0 auto;
+	cursor: pointer;	
+	width: 200px;
+	text-align: center;
+}
+</style>
+<div id="root"></div>
+<script type="text/babel">
+	var Wrap = React.createClass({
+		getInitialState:function(){
+			return {
+				like:false,
+				color:'#f00'
+			}
+		},
+		eventClick:function(){
+			this.setState({
+				like:!this.state.like ,
+				color: !this.state.color
+			});
+		},
+		render:function(){
+			var _txt = this.state.like ? "True" :"False";
+			var _color = this.state.color? "#f00" : "#1E90FF";
+			console.log(_txt);
+			console.log(_color);
+			return(
+				<div className="title">
+					<h1 className="title-h1" onClick={this.eventClick}>It's&nbsp;
+						<span style={{ color:_color , fontSize: '150%'}}>{_txt}</span>
+					</h1>
+				</div>
+			)
+		}
+	});
+	ReactDOM.render(
+		<Wrap />,
+		document.getElementById('root')
+	);
+</script>

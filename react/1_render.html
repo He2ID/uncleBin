@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+
+<div id="lw"></div>
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<script type="text/babel">
+	var i=2;
+	var styleConfig={
+		fontSize:'40px',
+		color:'#f00'
+	}
+	var arr=[<h2>Sunny</h2>,<h2>Cloudy</h2>,<h2>Rainy</h2>,<h2>Snowy</h2>];
+	var arr2=["0818","0819","0820"];
+	ReactDOM.render(
+		<div>
+			<h1>{"Local Weather"}</h1>
+			<div>{arr}</div>
+			<h1 style={styleConfig}>Weather Style</h1>
+			<h2>{ i==2?"yes":"no"}</h2>
+			<div>
+				{
+				arr2.map(function(n){
+					return <h3>{n}</h3>;
+				})
+				}
+			</div>
+		</div>,
+		document.getElementById('lw')
+	);
+</script>
+</body>
+</html>

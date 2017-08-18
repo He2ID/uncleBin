@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding: 0;
+		border: 0;
+	}
+	.wrap{
+		width: 500px;
+		height: 200px;
+		background: #ddd;
+	}
+	.title{
+		width: 100%;
+		height: 40px;
+		background: #eee;
+	}
+	.menu{
+		width: 100%;
+		height: 140px;
+		background: #999;
+	}	
+	</style>
+	
+</head>
+<body>
+	<div id="root"></div>
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<script type="text/babel">
+	var TitleDiv = React.createClass({
+		render:function(){
+			return(
+				<div className="title">
+					<h1>{this.props.aaa}</h1>
+				</div>
+			)
+		}
+	});
+	var MenuDiv = React.createClass({
+		render:function(){
+			return(
+				<div className="menu">
+					<h1>{this.props.bbb}</h1>
+				</div>
+			)
+		}
+	});	
+	var Wrap = React.createClass({
+		render:function(){
+			return(
+				<div className="wrap">
+					<TitleDiv aaa={this.props.title} />
+					<MenuDiv bbb={this.props.menu} />
+				</div>
+			)
+		}
+	});
+	ReactDOM.render(
+		<Wrap title="title" menu="main" />,
+		document.getElementById('root')
+	);	
+</script>
+</body>
+</html>
