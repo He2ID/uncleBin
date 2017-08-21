@@ -1,0 +1,52 @@
+<meta charset='utf-8' />
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<title>生命周期</title>
+<div id="testId"></div>
+<script type="text/babel">
+	var Content = React.createClass({
+		componentWillMount:function(){
+			console.log('插入前')
+		},
+		componentDidMount:function(){
+			console.log('插入后')
+		},
+		componentWillUpdate:function(){
+			console.log('重新渲染前')
+		},
+		componentDidUpdate:function(){
+			console.log('重新渲染后')
+		},
+		componentWillUnMount:function(){
+			console.log('移出DOM前')
+		},		
+		render:function(){
+			//props
+			return(
+				<h2>{this.props.myNum}</h2>
+			)
+		}
+	});
+	var Button = React.createClass({
+		//数值初始状态及点击变化
+		getInitialState:function(){
+			return {data:0}
+		},
+		eventClick:function(){
+			this.setState({data:++this.state.data})
+		},
+		render:function(){
+			return (
+				<div>
+					<button onClick={this.eventClick}>点击</button>
+					<Content myNum={this.state.data} />
+				</div>
+			)
+		}
+	})
+	ReactDOM.render(
+		<Button />,
+		document.getElementById('testId')
+	);
+</script>
