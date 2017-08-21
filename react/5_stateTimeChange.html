@@ -1,0 +1,39 @@
+<meta charset="UTF-8">
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<title>Fading</title>
+<div id="testId"></div>
+<script type="text/babel">
+	var Wrap = React.createClass({
+		getInitialState:function(){
+			return {
+				opacity:1
+			}
+		},
+		componentDidMount:function(){
+			var _this=this;//为便于子函数调用指向wrap的this
+			setInterval(function(){
+				var op=_this.state.opacity;
+				op -= 0.05;
+				if(op<0.1){
+					op = 1.0;
+				}
+				_this.setState({
+					opacity:op
+				});
+			},100);
+		},
+		render:function(){
+			return(
+				<div style={{opacity:this.state.opacity,fontSize:'40px'}}>
+				Fading
+				</div>
+			)
+		}
+	});
+	ReactDOM.render(
+		<Wrap name="FadingWord" />,
+		document.getElementById('testId')
+	);
+</script>

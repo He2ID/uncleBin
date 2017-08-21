@@ -1,0 +1,33 @@
+<meta charset="UTF-8">
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<title>计数器</title>
+<style>
+	
+</style>
+<div id="testId"></div>
+<script type="text/babel">
+var Counter = React.createClass({
+	getInitialState:function(){
+		return {countVal:0}
+	},
+	eventClick:function(){
+		this.setState(function(state){
+			return {countVal:++this.state.countVal}
+		})
+	},
+	render:function(){
+		return(
+			<h1 onClick={this.eventClick}>
+				{this.props.name} sings "Shot"<br />Click here to Count Times:{this.state.countVal}
+			</h1>
+		)
+	}
+});
+ReactDOM.render(
+	<Counter name="Alex" />,
+	document.getElementById('testId')
+);
+	
+</script>
