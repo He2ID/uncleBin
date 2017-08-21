@@ -1,0 +1,29 @@
+<meta charset='utf-8' />
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<title>ref 真实节点</title>
+<div id="testId"></div>
+<script type="text/babel">
+var MyBtn = React.createClass({
+	eventClick:function(){
+		// this.refs调用真实节点
+		var xx=this.refs.myInput.value;
+		console.log(xx);
+	},
+	render:function(){
+		return(
+			<div>
+				{/*加ref属性*/}
+				<input type="text" ref="myInput" value="Alax" />
+				<input type="button" value="点击" onClick={this.eventClick} />
+			</div>
+		)
+	}
+});
+
+ReactDOM.render(
+	<MyBtn />,
+	document.getElementById('testId')
+);
+</script>
