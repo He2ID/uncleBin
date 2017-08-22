@@ -1,0 +1,93 @@
+<meta charset='utf-8' />
+<script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+<script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+<script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<title>倒计时</title>
+<div id="timeWrap"></div>
+<script type="text/babel">
+var Day = React.createClass({
+	render:function(){
+		return <li>
+					<label>{this.props.dVal}</label>
+					<span>Day</span>
+				</li>	
+	}	
+});
+var Hours = React.createClass({
+	render:function(){
+		return <li>
+					<label>{this.props.hVal}</label>
+					<span>Hours</span>
+				</li>	
+	}
+});
+var Mins = React.createClass({
+	render:function(){
+		return <li>
+					<label>{this.props.mVal}</label>
+					<span>Mins</span>
+				</li>	
+	}
+});
+var Secs = React.createClass({
+	// componentWillReceiveProps:function(n){
+	// 	console.log(n)
+	// 	this.setState({
+	// 		sVal:n.sVal
+	// 	});
+	// },
+	render:function(){
+		return <li>
+					<label>{this.props.sVal}</label>
+					<span>Secs</span>
+				</li>	
+	}
+});
+
+var TimeWrap = React.createClass({
+	getInitialState:function(){
+		return{
+			day:'0',
+			hours:'0',
+			minute:'0',
+			second:'0'
+		}
+	},
+	componentDidMount(){
+		var _self = this;
+		setInterval(function(){
+
+			var date = new Date();
+			var year = date.getFullYear();
+			var date2 = new Date(year,8,30);
+			var time = (date2-date)/1000;
+			var day = Math.floor(time/(24*60*60));
+			var hour = Math.floor(time%(24*60*60)/(60*60));
+			var minute = Math.floor(time%(24*60*60)%(60*60)/60);
+			var second = Math.floor(time%(24*60*60)%(60*60)%60);
+			_self.setState({
+				day:day,
+				hours:hour,
+				minute:minute,
+				second:second
+			});
+		},1000);
+	},
+	render:function(){
+		return <ul>
+					<Day dVal={this.state.day} />
+					<Hours hVal={this.state.hours} />
+					<Mins mVal={this.state.minute} />
+					<Secs sVal={this.state.second} />				
+				</ul> 
+	}
+});
+
+ReactDOM.render(
+	<TimeWrap />,
+	document.getElementById('timeWrap')
+);
+	
+</script>
