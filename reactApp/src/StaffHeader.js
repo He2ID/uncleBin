@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export default class StaffHeader extends React.Component{
+	//
+	handleSearch(){
+		let bar = ReactDOM.findDOMNode(this.refs.searchBar);
+		//用App searchStaff方法 将搜索关键字
+		this.props.searchStaff(bar.value);
+	} 
 	render(){
 		return (
 			<div style={{'textAlign':'center'}}>
@@ -10,7 +16,8 @@ export default class StaffHeader extends React.Component{
 					<tbody>
 						<tr>
 							<td>
-								<input type="text" value="search"/>
+								{/* input改变 */}
+								<input type="text" ref="searchBar" onChange={this.handleSearch.bind(this)} placeholder="名字" />
 							</td>
 							<td>
 								<label>人员筛选</label>

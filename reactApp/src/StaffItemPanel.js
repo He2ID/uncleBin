@@ -5,11 +5,11 @@ import StaffItem from './StaffItem';
 export default class StaffItemPanel extends React.Component{
 	render(){
 		let items = [];
-		if( this.props.items.length==0 ){
+		if( this.props.items.length===0 ){
 			items.push(<tr>没有用户</tr>)
 		}else{
 			this.props.items.forEach((item)=>{
-				items.push( <StaffItem item={item} /> )
+				items.push( <StaffItem key={item.key} item={item} /> )
 			})
 		}
 		return (
@@ -24,6 +24,7 @@ export default class StaffItemPanel extends React.Component{
 					</tr>
 				</thead>
 				<tbody>{items}</tbody>
+				{/*数组能自动展开*/}
 			</table>
 		)
 	}
