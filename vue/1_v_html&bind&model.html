@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-html|bind|model</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+	<style>
+		.sty1{
+			background:#f00;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<!-- 【v-html】插入html -->
+		<p v-html='message'></p>
+		<label>Change color</label>
+		<!-- 【v-model】双向绑定表单 -->
+		<input type="checkbox" v-model='sty1' />
+		<br />
+		<!-- 【v-bind】 绑定属性值-->
+		<!--默认不选 不选无class，选中class="sty1" -->
+		<div v-bind:class="{'sty1':sty1}">
+			【v-bind】my color change
+		</div>
+	</div>
+	<script type="text/javascript">
+	new Vue({
+		el:'#app',
+		data:{
+			message:"Hello Vue",
+			sty1:false//true则 默认选
+		}
+	});
+	</script>
+</body>
+</html>
