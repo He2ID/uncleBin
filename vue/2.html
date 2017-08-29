@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表达式</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+	{{2*4}}<br />
+	{{isTrue?'true':'false'}}<br />
+	{{msg.split('').reverse().join('')}}<br />
+	{{msg}}
+	<div v-bind:data-id="id + ' man'">ALex</div>
+</div>
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			isTrue:true,
+			msg:'12345',
+			id:'Right-hand'
+		}
+	});
+</script>
+</body>
+</html>
