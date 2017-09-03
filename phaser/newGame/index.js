@@ -3,22 +3,71 @@ var game = new Phaser.Game(
 	667, //场景高
 	Phaser.AUTO, //渲染模式
 	"game", //canvas id
-	{	
-		preload: preload, //加载
-		create: create, //创建
-		update: update, //帧更新
-		render: render//渲染到屏幕
-	}
+	// {	
+	// 	preload: preload, //加载
+	// 	create: create, //创建
+	// 	update: update, //帧更新
+	// 	render: render//渲染到屏幕
+	// }
 );
 var myPlane, bullets, enemy,enemyBullets, bulletsGroup;
 var myPlaneLife = 3;
+var score = 0;
 var myEnemy = {
 	selfPoolNum:30,//敌机数量
-	timeInterval: 2,//制造敌机时间间隔
+	timeInterval: 3,//制造敌机时间间隔
 	velocityY:150,//敌机高度
 	life:3 //敌机生命
 }
+game.States = {};
+game.States.preload = function(){
+	this.preload = function(){
+	    game.load.image('background', './planeGame/blue.png');
+	    game.load.spritesheet('myPlane', './planeGame/playerShip_orange.png');
+	    game.load.spritesheet('bullet', './planeGame/laserBlue.png');
+	    game.load.spritesheet('enemy', './planeGame/ufoGreen.png');
+	    game.load.spritesheet('enemyBullet', '/planeGame/laserRed.png');
+	    game.load.spritesheet('buttonBlue', '/planeGame/buttonBlue.png');
+	    game.load.spritesheet('buttonYellow', '/planeGame/buttonYellow.png');
+	    game.load.image('numeral0', './planeGame/numeral0.png');
+	    game.load.image('numeral1', './planeGame/numeral1.png');
+	    game.load.image('numeral2', './planeGame/numeral2.png');
+	    game.load.image('numeral3', './planeGame/numeral3.png');
+	    game.load.image('numeral4', './planeGame/numeral4.png');
+	    game.load.image('numeral5', './planeGame/numeral5.png');
+	    game.load.image('numeral6', './planeGame/numeral6.png');
+	    game.load.image('numeral7', './planeGame/numeral7.png');
+	    game.load.image('numeral8', './planeGame/numeral8.png');
+	    game.load.image('numeral9', './planeGame/numeral9.png');
+	}
+	this.create = function(){
+		game.state.start('start');
+	}
+}
+//开始游戏界面
+game.States.start = function(){
+	this.create = function(){
+		this.buttonBlue = game.add.button(70,3000,'buttonBlue',this.onStart,this,1,1,0);
+	}
+	this.onStart = function(){
+		game.state.start('main');
+	}
+}
+game.States.main = function(){
+	this.create = function(){
 
+	}
+	this.updateScore = function(){
+
+	}
+	this.update = function(){
+		//敌机碰撞情景
+		game.physics.arcade.overlap(enemy.enemys, bullets.bullets, enemy.directAttack, null, this);
+		//本机碰撞情景
+		game.physics.arcade.overlap(myPlane,bulletsGroup.children,myPlaneAndEnemyBullets,null,this);
+	}
+	this.EnemyFactory = EnemyFactory(params);
+}
 function EnemyFactory(params){
 	this.init = function(){
 		//敌方UFO
@@ -50,14 +99,14 @@ function EnemyFactory(params){
 			enemy.life = params.life;
 			//敌机生死 子弹状态
 			if(!enemy.selectBullet){
-				this.enemyBullets = game.add.weapon(50,'enemyBullets',null,bulletsGroup);
+				this.enemyBullets = game.add.weapon(50,'enemyBullet',null,bulletsGroup);
 				var _Bullets = this.enemyBullets;
 				_Bullets.enableBody = true;
 				_Bullets.scale = (0.1, 0.1);
 				_Bullets.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
 				_Bullets.bulletSpeed = -300;
 				_Bullets.fireRate = 900;
-				_Bullets.trackSprite(ENEMY,20,50);
+				_Bullets.trackSprite(enemy,20,50);
 				_Bullets.bulletAngleOffset = 270;
 				_Bullets.autofire = true;
 				enemy.selectBullet = this.enemyBullets;
@@ -125,12 +174,12 @@ function myPlaneAndEnemyBullets(myPlaneObj,bulletObj){
 	console.log(myPlaneLife);
 	bulletObj.kill();
 }
-function update(){
-	//敌机碰撞情景
-	game.physics.arcade.overlap(enemy.enemys, bullets.bullets, enemy.directAttack, null, this);
-	//本机碰撞情景
-	game.physics.arcade.overlap(myPlane,bulletsGroup.children,myPlaneAndEnemyBullets,null,this);
-}
+// function update(){
+// 	//敌机碰撞情景
+// 	game.physics.arcade.overlap(enemy.enemys, bullets.bullets, enemy.directAttack, null, this);
+// 	//本机碰撞情景
+// 	game.physics.arcade.overlap(myPlane,bulletsGroup.children,myPlaneAndEnemyBullets,null,this);
+// }
 function render(){
 
 }
