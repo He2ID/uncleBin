@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>异步</title>
+</head>
+<body>
+	<button id="btn1">test</button>
+	<script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+	<script>
+		//ajax加载
+		console.log("start 1");
+		$.get('/test.json',function(data){
+			console.log(data);
+		})
+		console.log("end 1");
+		//图片加载
+		console.log("start 2");
+		var img = document.createElement('img');
+		img.onload = function(){
+			console.log('loaded')
+		}
+		img.src = "https://www.baidu.com/img/bd_logo1.png";
+		console.log("end 2");
+		//事件绑定
+		console.log("start 3");
+		var btn1 = document.getElementsByTagName('button');
+		btn1[0].addEventListener('click',function(){
+			console.log('clicked');
+		})
+		console.log("end 3");
+		//延时
+		console.log("start 5");
+		setTimeout(function(){
+			console.log("wait 0ms");
+		});
+		console.log("end 5");		
+	</script>	
+</body>
+</html>
