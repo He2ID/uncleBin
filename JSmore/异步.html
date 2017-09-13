@@ -29,12 +29,24 @@
 			console.log('clicked');
 		})
 		console.log("end 3");
-		//延时
+		//延时--start/mid/end 5 , wait 0ms, wait 1200ms, wait 1000ms+
+		//延时--start/mid/end 5 , wait 0ms, wait 1200ms+, wait 1300ms
 		console.log("start 5");
 		setTimeout(function(){
+			console.log("wait 1200ms");
+		},1200);
+		// console.log("start 5");
+		// setTimeout(function(){
+		// 	console.log("wait 1300ms");
+		// },1300);		
+		console.log("mid 5");
+		setTimeout(function(){
+			console.log("wait 1200ms+");
+		},1200);		
+		console.log("end 5");
+		setTimeout(function(){
 			console.log("wait 0ms");
-		});
-		console.log("end 5");		
+		},0);		
 	</script>	
 </body>
 </html>
