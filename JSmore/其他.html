@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	// Date
+	console.log("=== Date ===");
+	var dt = new Date();
+	console.log(Date.now());//毫秒数
+	console.log(dt.getTime());
+	console.log(dt);//Wed Sep 13 2017 23:37:05 GMT+0800 (中国标准时间)
+	console.log(dt.getFullYear());
+	console.log(dt.getMonth()+1);
+	console.log(dt.getDate());
+	//注意s
+	console.log(dt.getHours());
+	console.log(dt.getMinutes());
+	console.log(dt.getSeconds());//没有0
+
+	//获取固定格式 20XX-0X-XX 日期写法
+	function myDate(dt){
+		if(!dt){
+			dt = new Date();
+		}
+		var year = dt.getFullYear();
+		var month = dt.getMonth() + 1;
+		var day = dt.getDate();
+		month = (month<10)?('0'+month):(month);
+		day = (day<10)?('0'+day):(day);
+		return year + '-' + month + '-' + day;
+	}
+	var newDt = new Date();
+	var myDate = myDate(newDt);
+	console.log(myDate);
+
+	//Math
+	console.log("=== Math ===");
+	//获取固定长度随机数
+	var random = (Math.random() + '0000000000').slice(0,10);//10个0
+	console.log(random);
+	//Array
+	console.log("=== Array ===");
+	var arr = [1,22,333,44];
+	arr.forEach(function(item,index){
+		console.log(index + ':' + item);
+	})
+	var everyResult = arr.every(function(item,index){
+		if(!isNaN(item)){
+			return true;
+		}
+	})
+	console.log(everyResult);
+	var someResult = arr.some(function(item,index){
+		if(item > 100){
+			return true;
+		}
+	})
+	console.log(someResult);
+	var sortResult = arr.sort(function(a,b){
+		return a - b ;//小到大
+	})
+	console.log(sortResult);	
+	var mapResult = arr.map(function(item,index){
+		return '<b>'+ (item - index * 10) + '</b>'
+	})
+	console.log(mapResult);		
+	var filterResult = arr.filter(function(item,index){
+		if(item > 30){
+			return true;
+		}
+	})
+	console.log(filterResult);//[44, 333]	
+	
+	//Object
+	console.log('===Object===');
+	var obj = {
+		x:10,
+		y:20,
+		z:30
+	}
+	var key;
+	for(key in obj){
+		if(obj.hasOwnProperty(key)){
+			console.log(key + ':' + obj[key]);  	
+		}
+	}
+
+	//遍历对象和数组的forEach
+	function forEach(obj, fn){
+		if(obj instanceof Array){
+			//数组( forEach参数顺序区别真实的forEach )
+			obj.forEach(function(item, index){
+				fn(index, item)
+			});
+
+		}else{
+			//对象
+			let key = '';
+			for(key in obj){
+				fn(key, obj[key]);
+			}
+		}
+	}
+</script>	
+</body>
+</html>
