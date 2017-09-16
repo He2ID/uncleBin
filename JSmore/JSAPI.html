@@ -17,7 +17,7 @@
 <div id="div2"><p id="p3">p3</p><p id="p4">p4</p></div>	
 <script>
 	//=======  DOM  ========
-	console.log(=== DOM ===);
+	console.log('=== DOM ===');
 	//DOM节点操作
 	//获取DOM (对象)
 	var div1 = document.getElementById('div1');
@@ -50,6 +50,21 @@
 	console.log(div2.childNodes);
 	//删除节点
 	div1.removeChild(div1.childNodes[1]);
+
+	//=======  BOM  ========
+	console.log('=== BOM ===');
+	//navigator
+	console.log(navigator.userAgent);
+	//position
+	// location.href = 'http://music.163.com/m/song?id=35804599#artist=Lin';//修改
+	// location.protocol//协议 -- http:
+	// location.host//域 -- music.163.com
+	// location.pathname//plus -- /m/song
+	// location.search//？及后面 -- ?id=35804599	
+	// location.hash//#及后面 -- #artist=Lin
+	// location.href//整个地址
+
+	
 </script>
 </body>
 </html>
