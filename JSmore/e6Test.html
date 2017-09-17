@@ -1,0 +1,107 @@
+<meta charset='utf-8' />
+<script type="text/javascript">
+// 这个{}就是js的“块”
+// let，它用来声明“块级作用域”。
+{
+	var a = 123;
+	let b = 666;
+// console.log(b);
+}
+// console.log(a);
+// console.log(b);
+
+// const,它声明之后的变量，不能修改。
+const a123 = 123;
+// console.log(a123);
+// a123=456; //const声明的常量，不能重新赋值
+// console.log(a123);
+
+// 复习js的 prototype 和 constructor
+/*
+function TempObj(){
+	this.type='动物';
+}
+console.log( TempObj.prototype )
+console.log( TempObj.prototype.constructor )
+*/
+
+// 定义一个父类
+class Animal{
+	// 这是构造方法
+	constructor(){
+		// 这里定义的属性和方法，是给实例对象使用的。
+		this.type='动物';
+	}
+	// 就是给实例用的方法
+	say(n){
+		console.log(n)
+	}
+}
+
+let animal = new Animal();
+// console.log( animal )
+animal.say('我'+ animal.type +'，是你爸爸');
+
+// 这是子类===========
+class Cat extends Animal{
+	constructor(){
+		// 在子类中，super代指父类的实例。
+		super();
+		this.type = '猫';
+	}
+}
+
+let cat = new Cat();
+// console.log( cat.type )
+cat.say('我是'+ cat.type +'，爸爸你好')
+
+//=>
+function a1(){
+	console.log('ES5')
+}
+a1();
+var a2=(n)=>{return n};
+console.log( a2('ES6') );
+
+class ArrowTest{
+	constructor(){
+		this.type="ES6Arrow"
+	}
+	say(){
+		setTimeout(()=>{
+			console.log(this.type)
+		},1000);
+	}
+} 
+let _arrT = new ArrowTest();
+_arrT.say();
+//
+function addFn(a,b){
+	return a+b;
+}
+console.log( addFn(3,4) );
+
+let addFn6=(a,b)=>{
+	console.log(a+b);
+}
+addFn6(5,6);
+//模板字符串
+//解构 对象中提取值
+let b1="b1";
+let b2="b2";
+let b3={b1,b2};
+console.log(b3.b1);
+
+
+//对象解构
+//属性名与变量名一致
+let b6={
+	b61:'b611',
+	b62:'b622',
+	b63:'b633'
+}
+let{b61,b62}=b6;
+console.log(b61,b62); //b611 b622
+
+//import{component} from
+</script>
